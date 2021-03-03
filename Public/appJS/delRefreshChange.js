@@ -20,15 +20,14 @@ let tab = [];
 const refresh_weather_block = function () {
   setTimeout(function () {
     let refreshCollection = $(".refresh");
-    $(refreshCollection).each(function () {
-      $(this).on({
+      $(refreshCollection).on({
         click: function () {
           let actCity = $(this).parent().parent().find('.c-txt').text();
           get_refresh_data('/w', actCity);
           set_actual_data_and_format_style($(this).parent().parent());
         },
       });
-    });
+    
   }, 700);
 };
 
