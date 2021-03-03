@@ -66,6 +66,7 @@ $standard-transition: 1.5s;
 }
 
 body {
+  padding-bottom: 70px;
   min-width: 300px;
   @include txt-al-siz-col-li(null, $txt-small, $txt-color-basic2, null);
   background-color: #1d1d1d
@@ -171,7 +172,6 @@ input[type="button"] {
 #location-img:hover{
   background-color: #284b59;
 }
-
 
 .new-weather-block {
   top: 60px;
