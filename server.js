@@ -17,11 +17,14 @@ app.use((req, res, next) => {
 app.use(require("body-parser").json());
 app.use(serveStatic('Public', { 'index': ['index.html', 'index.htm'] }))
 
-
 // get
 app.get('/w', async function(req, res){
-  console.log(req.query.city)
   let openWeatherData = await weather.getWeather(`${www}?q=${req.query.city}&appId=${key}&lang=pl&units=metric`);
+  res.json(openWeatherData);
+})
+app.get('/lat', async function(req, res){
+  console.log(req.query.lat)
+  let openWeatherData = await weather.getWeather(`${www}?lat=${req.query.lat}&lon=${req.query.lon}&appId=${key}&lang=pl&units=metric`);
   res.json(openWeatherData);
 })
 

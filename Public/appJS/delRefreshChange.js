@@ -15,7 +15,7 @@ const remove_block_weather = () => {
   }, 700);
 };
 
-// refresh function
+// // refresh function
 let tab = [];
 const refresh_weather_block = function () {
   setTimeout(function () {
@@ -24,7 +24,7 @@ const refresh_weather_block = function () {
       $(this).on({
         click: function () {
           let actCity = $(this).parent().parent().find('.c-txt').text();
-          get_refresh_data(openWeatherUrl, actCity, SK.MSK, "metric", "pl");
+          get_refresh_data('/w', actCity);
           set_actual_data_and_format_style($(this).parent().parent());
         },
       });
@@ -32,12 +32,11 @@ const refresh_weather_block = function () {
   }, 700);
 };
 
-function get_refresh_data(url, cityName, appId, units, lang) {
+function get_refresh_data(url, cityName) {
   const request = $.ajax({
     url: url,
-    dataType: "jsonp",
-    lang: "pl",
-    data: { q: cityName, appid: appId, units: units, lang: lang },
+    dataType: "json",
+    data: { city: cityName },
     type: "GET",
   });
   request.done(function (response) {
@@ -50,7 +49,7 @@ function get_refresh_data(url, cityName, appId, units, lang) {
   });
 }
 
-// funkcja change city
+// // funkcja change city
 const change_city = function () {
   setTimeout(() => {
     let changeCollection = $(".change");
@@ -100,8 +99,8 @@ function serwer_change(el) {
     if(newCityName != ""){
       let cur = $(this);
       $.getJSON(
-        openWeatherUrl,
-        { q: newCityName, appId: SK.MSK, units: "metric", lang: "pl" },
+        '/w',
+        { city: newCityName },
         function (data, textStatus, jqXHR) {
           tab = [];
           let a = objectFromData(data);
@@ -127,13 +126,12 @@ const find_me = () => {
     function get_actual_position(data) {
       let lat = data.coords.latitude;
       let lon = data.coords.longitude;
-      get_your_position(openWeatherUrl, lat, lon, SK.MSK, "metric", "pl");
-      function get_your_position(url, lat, lon, appId, units, lang) {
+      get_your_position('/lat', lat, lon);
+      function get_your_position(url, lat, lon) {
         const request = $.ajax({
           url: url,
-          dataType: "jsonp",
-          lang: "pl",
-          data: { lat: lat, lon: lon, appid: appId, units: units, lang: lang },
+          dataType: "json",
+          data: { lat: lat, lon: lon },
           type: "GET",
         });
         request.done(function (response) {
