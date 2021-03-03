@@ -38,6 +38,7 @@ const prepareData = function (cityName) {
     const request = $.ajax({
       url: url,
       dataType: "json",
+      contentType: "application/json; charset=utf-8",
       data: { city: cityName },
       type: "GET",
     })
