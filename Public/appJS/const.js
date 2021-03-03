@@ -5,7 +5,7 @@ const mainContainer = $(".container");
 let actualWeatherData;
 const infoMessage = $(".info-mes");
 const infoMessageTxt = $(infoMessage).children().text();
-
+document.addEventListener("touchstart", function() {}, true);
 const enter = (enterEl, clickEl) => {
   $(enterEl).on({
     keypress: (e) => {
