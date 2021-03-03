@@ -7,7 +7,9 @@ const getWeather = async (url) => {
       return data;
     }
     catch(err){
-      throw err;
+      if(err){
+        return
+      }
     }
   }
 
