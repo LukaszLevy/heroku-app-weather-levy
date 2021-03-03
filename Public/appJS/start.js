@@ -52,6 +52,7 @@ const prepareData = function (cityName) {
   function fetchData(weather) {
     $("#add-area").append(createNewWeatherBlock(weather));
     new_weather_block_animate();
+    scroll_to_added_element();
     temp_indicator($(".temp-indicator"), null, weather.main.temp);
     pres_indicator($(".pres-anime-box"), null, weather.main.pressure);
     wind_indicator($(".wind-anime-box"), null, weather.wind.speed);

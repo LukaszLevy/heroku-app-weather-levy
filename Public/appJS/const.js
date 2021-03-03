@@ -5,7 +5,7 @@ const mainContainer = $(".container");
 let actualWeatherData;
 const infoMessage = $(".info-mes");
 const infoMessageTxt = $(infoMessage).children().text();
-document.addEventListener("touchstart", function() {}, true);
+
 const enter = (enterEl, clickEl) => {
   $(enterEl).on({
     keypress: (e) => {
@@ -61,6 +61,7 @@ const objectFromData = (weather) => {
 
 // funkcja alert
 const myAlert = (txt) => {
+  window.scrollTo({top: 0, behavior: 'smooth'});
   $(infoMessage).css("height", "100px");
   setTimeout(() => {
     $(infoMessage).children().text(txt)
@@ -87,4 +88,13 @@ function set_actual_data_and_format_style(ths) {
     wind_indicator(null, $(ths).find(".wind-anime-box"), tab[0].wind);
   }, 700);
 }
+
+function scroll_to_added_element(){
+  document.querySelector('#add-area').lastElementChild.scrollIntoView({
+    behavior: 'smooth' 
+  });
+}
+
+
+
 
