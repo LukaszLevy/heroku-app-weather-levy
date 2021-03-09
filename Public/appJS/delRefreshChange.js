@@ -9,6 +9,7 @@ const remove_block_weather = () => {
           e.stopImmediatePropagation();
           let currentWeatherBlock = $(this).parent().parent(); //aktualny weather block, skrot cwblet
           $(currentWeatherBlock).remove();
+          change_wall_size();
         },
       });
     });
@@ -25,6 +26,12 @@ const refresh_weather_block = function () {
           let actCity = $(this).parent().parent().find('.c-txt').text();
           get_refresh_data('/w', actCity);
           set_actual_data_and_format_style($(this).parent().parent());
+        },
+        mouseover: function(){
+          $(this).addClass('refreshHover');
+        },
+        mouseleave: function(){
+          $(this).removeClass('refreshHover');
         },
       });
     
@@ -57,6 +64,16 @@ const change_city = function () {
         e.stopPropagation();
         e.stopImmediatePropagation();
         create_change_box_search($(this));
+        $(".city-name-replace").keyup(function(e) {
+          var regex = /^[a-zA-Z]+$/;
+          if (regex.test(this.value) !== true)
+          myAlert("W to pole możesz wpisywać tylko litery, bez polskich znaków");
+          this.value = this.value.replace(/[^a-zA-Z]+/, '');
+        });
+        
+        $('.city-name-replace').on("paste",function(e) {
+          e.preventDefault();
+        });
         delete_new_box_search($(this).siblings(".new-in-box").find(".okx-2"));
         serwer_change($(this).siblings(".new-in-box").find(".okx-1"));
         enter(".city-name-replace", $(".city-name-replace").siblings(".okx-1"));
@@ -70,7 +87,7 @@ function create_change_box_search(ths) {
   let newInput = 
     `<div class='new-in-box' style="display: none">
       <div class='okx-box'>
-        <input type="text" placeholder="" class="city-name-replace" value=""/>
+        <input type="text" title="Podaj miejscowość" class="city-name-replace" value="" oncontextmenu="return false"/>
         <div class='okx-1'>ok</div>
         <div class='okx-2'>x</div>
       </div>
@@ -88,6 +105,7 @@ function delete_new_box_search(el, time = 500) {
     $(current).slideUp(time);
     setTimeout(() => {
       $(current).remove();
+      
     }, time + 50);
   });
 }

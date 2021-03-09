@@ -14,7 +14,22 @@
 </head>
 
 <body>
-
+  <section class="container ll-app">
+    <div class="row profile">
+      <a target="_blank" href="https://lukaszlevy.github.io/lukaszlewandowski.pl/" title="Przejdź na stronę autora"><img class="icn-soc" src="img/home_icon.png"></a>
+        <a href="https://www.linkedin.com/in/lukaszlewandowskilaboratorium/" target="_blank" title="linkedin"> <img
+            class="icn-soc" src="img/soci_0.png"></a>
+        <a href="https://www.facebook.com/lukasz.lewandowski.14/" target="_blank" title="facebook"> <img class="icn-soc"
+            src="img/soci_1.png"></a>
+        <a href="https://github.com/LukaszLevy" target="_blank" title="git-repozytorium"> <img class="icn-soc"
+            src="img/soci_2.png"></a>
+    </div>
+    <div id="fname">lewandowski łuaksz</div>
+   
+  </section>
+  <div class="wall-box">
+    <div class="wall wall-1"></div>
+  </div>
   <div class="m-auto px-3 align-items-center info-mes">
     <div></div>
   </div>
@@ -25,16 +40,17 @@
     <div class="row mt-1 justify-content-center ">
       <div class="p-2 serach-module">
         <h2 class="title-search">Wpisz nazwę miejscowości</h2>
-        <input type="text" placeholder="Miejscowość..." id="city-name" value="" />
+        <input type="text" oncontextmenu="return false" placeholder="Miejscowość..." id="city-name" value="" title="Podaj miejscowość"/>
       </div>
     </div>
     <div class="row justify-content-center mt-1">
       <div class="p-2 metrics-module">
-        <img id="location-img" src="img/loc.png">
-        <input type="button" class="btn btn-success metric-b" value="Szukaj" />
+        <img id="location-img" src="img/loc.png" title="Lokalizator">
+        <input type="button" class="btn btn-success metric-b" value="Szukaj" title="Kliknij aby wyszukać"/>
       </div>
     </div>
   </div>
+  <div class="top" title="Przejdz na początek strony">top</div>
   <div id="add-area"></div>
   <script src="skrypty/jquery.js"></script>
   <script src="appJS/const.js"></script>

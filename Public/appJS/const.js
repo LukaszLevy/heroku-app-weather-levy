@@ -61,7 +61,7 @@ const objectFromData = (weather) => {
 
 // funkcja alert
 const myAlert = (txt) => {
-  window.scrollTo({top: 0, behavior: 'smooth'});
+  // window.scrollTo({top: 0, behavior: 'smooth'});
   $(infoMessage).css("height", "100px");
   setTimeout(() => {
     $(infoMessage).children().text(txt)
@@ -69,7 +69,7 @@ const myAlert = (txt) => {
   setTimeout(() => {
     $(infoMessage).children().text("");
     $(infoMessage).css("height", 0);
-  }, 1500);
+  }, 2500);
 };
 
 // funkcja ustalajaca aktualne dane i zmieniajaca animacje 
@@ -89,11 +89,42 @@ function set_actual_data_and_format_style(ths) {
   }, 700);
 }
 
-function scroll_to_added_element(){
-  document.querySelector('#add-area').lastElementChild.scrollIntoView({
-    behavior: 'smooth' 
-  });
+function scroll_to_added_element(time = 300){
+  setTimeout(()=>{
+    document.querySelector('#add-area').lastElementChild.scrollIntoView({
+      behavior: 'smooth',
+      block: "center" 
+    });
+  }, time)
+  
 }
+
+function change_wall_size(time = 500){
+  setTimeout(()=>{
+    let wallBoxes = $('.wall-box');
+    let docH = $('html').height();
+    $(wallBoxes).css('height', `${docH}`)
+    }, time)
+}
+
+$(window).on('resize', function(){
+  change_wall_size();
+})
+
+
+function show_my_name(){
+  $('#fname').css("display", "block");
+}
+
+$('.top').on("click", function(){
+  
+  document.querySelector('html').scrollTo({
+    top: 0,
+    behavior: "smooth"
+  })
+})
+
+
 
 
 

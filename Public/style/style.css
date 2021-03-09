@@ -4,6 +4,85 @@ body {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.9);
   background-color: #1d1d1d;
+  min-height: 100vh;
+  padding-top: 70px;
+}
+
+.ll-app {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  width: max-content;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  border-radius: 10px;
+}
+
+.ll-app:hover {
+  background-color: white;
+}
+
+.ll-app:hover #fname {
+  display: block;
+}
+
+.icn-soc {
+  width: 22px;
+  margin: 0 5px;
+}
+
+.icn-soc:hover {
+  filter: drop-shadow(1px 2px 4px black);
+  transform: scale(1.2);
+}
+
+#fname {
+  display: none;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  bottom: -40px;
+  font-size: 12px;
+  text-align: center;
+  background-color: #3e4550;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-sizing: border;
+}
+
+.top {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  font-size: 12px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.top:hover {
+  background-color: white;
+  color: black;
+  filter: drop-shadow(1px 2px 4px black);
+}
+
+.wall-box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: -1;
+  transition: .5s;
+}
+
+.wall {
+  background-image: url(../img/wall/wall_0.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
 }
 
 .info-mes {
@@ -19,12 +98,16 @@ body {
   -moz-border-radius: 0 0 5px 5px;
   border-radius: 0 0 5px 5px;
   height: 0;
-  position: relative;
+  position: fixed;
   width: 70%;
   min-width: 200px;
   max-width: 900px;
   background-color: rgba(255, 140, 140, 0.8);
   transition: 0.4s;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: 1000;
 }
 
 .info-mes > div {
@@ -36,7 +119,6 @@ body {
 
 .my-cont {
   min-width: 300px;
-  margin-top: 70px;
   max-width: 900px;
   box-shadow: 2px 2px 20px 0px black;
   width: max-content;
@@ -129,12 +211,16 @@ input[type="button"] {
   filter: drop-shadow(1px 2px 4px black);
   cursor: pointer;
   border-radius: 50%;
-  transition: .3s;
+  transition: 0.3s;
   padding: 5px;
 }
 
 #location-img:hover {
   background-color: #284b59;
+}
+
+#add-area {
+  text-align: center;
 }
 
 .new-weather-block {
@@ -149,7 +235,12 @@ input[type="button"] {
   -moz-filter: drop-shadow(1px 2px 4px #282828);
   -ms-filter: drop-shadow(1px 2px 4px #282828);
   filter: drop-shadow(1px 2px 4px #282828);
-  width: auto;
+  width: 40%;
+  min-width: 300px;
+  display: inline-grid;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 70px;
 }
 
 .nwb-show-animate {
@@ -161,7 +252,7 @@ input[type="button"] {
   height: 0;
 }
 
-.delete, .refresh, .change {
+.delete, .change {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -180,7 +271,7 @@ input[type="button"] {
   background-color: white;
 }
 
-.delete:hover, .refresh:hover, .change:hover {
+.delete:hover, .change:hover {
   background-color: rgba(255, 140, 140, 0.8);
 }
 
@@ -193,7 +284,30 @@ input[type="button"] {
   filter: drop-shadow(0px -2px 3px black);
 }
 
-.refresh:hover, .change:hover {
+.refresh {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-filter: drop-shadow(1px 2px 4px #282828);
+  -moz-filter: drop-shadow(1px 2px 4px #282828);
+  -ms-filter: drop-shadow(1px 2px 4px #282828);
+  filter: drop-shadow(1px 2px 4px #282828);
+  text-align: center;
+  font-size: 12px;
+  color: black;
+  padding: 0.3rem 0.6rem;
+  background-color: rgba(40, 40, 40, 0.6);
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: white;
+}
+
+.refreshHover {
+  background-color: #218838;
+}
+
+.change:hover {
   background-color: #218838;
 }
 

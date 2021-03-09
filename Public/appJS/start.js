@@ -23,7 +23,7 @@ const prepareData = function (cityName) {
       }
     }
     if (cityName != "") {
-      if (add.length < 4) {
+      if (add.length <= 4) {
         checker(prepare_city_name(cityName));
       } else {
         myAlert("Przekroczono maksymalną liczbę miejscowości na liście");
@@ -70,6 +70,7 @@ const prepareData = function (cityName) {
         remove_block_weather();
         refresh_weather_block();
         change_city();
+        change_wall_size();
       },
     });
     $("#location-img").on("click", () => {
@@ -93,6 +94,22 @@ const prepareData = function (cityName) {
     enter(cityNameIn, $(".metric-b"));
     // funkcje
     find_me();
-  }); // document.ready function koniec
+
+
+    // sprawdzenie poprawnosci wpisywanego tekstu
+  $("#city-name").keyup(function(e) {
+    var regex = /^[a-zA-Z]+$/;
+    if (regex.test(this.value) !== true)
+    myAlert("W to pole możesz wpisywać tylko litery, bez polskich znaków");
+    this.value = this.value.replace(/[^a-zA-Z]+/, '');
+  });
+  
+  $('#city-name').on("paste",function(e) {
+    e.preventDefault();
+  });
+
+  
+
+}); // document.ready function koniec
   
   
