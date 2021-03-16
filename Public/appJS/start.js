@@ -39,7 +39,7 @@ const prepareData = function (cityName) {
       url: url,
       dataType: "json",
       contentType: "application/json; charset=utf-8",
-      data: { city: cityName },
+      data: { city: encodeURIComponent(cityName) },
       type: "GET",
     })
     .done((dt)=>{
@@ -98,10 +98,10 @@ const prepareData = function (cityName) {
 
     // sprawdzenie poprawnosci wpisywanego tekstu
   $("#city-name").keyup(function(e) {
-    var regex = /^[a-zA-Z]+$/;
+    var regex = /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ -]+$/;
     if (regex.test(this.value) !== true)
-    myAlert("W to pole możesz wpisywać tylko litery, bez polskich znaków");
-    this.value = this.value.replace(/[^a-zA-Z]+/, '');
+    myAlert("W to pole możesz wpisywać tylko litery.");
+    this.value = this.value.replace(/[^a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ -]+/, '');
   });
   
   $('#city-name').on("paste",function(e) {

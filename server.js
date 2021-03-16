@@ -19,6 +19,7 @@ app.use(serveStatic('Public', { 'index': ['index.html', 'index.htm'] }))
 
 // get
 app.get('/w', async function(req, res){
+  console.log(req.hostname);
   let openWeatherData = await weather.getWeather(`${www}?q=${req.query.city}&appId=${key}&lang=pl&units=metric`);
   res.json(openWeatherData);
 })

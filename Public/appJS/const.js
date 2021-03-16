@@ -124,7 +124,12 @@ $('.top').on("click", function(){
   })
 })
 
-
+$('.minimal').on('click', () => {
+  $('.title-module').slideToggle();;
+  $('.title-search').slideToggle();
+  // $('.title-module').toggleClass('minimal-active');
+  // $('.title-search').toggleClass('minimal-active');
+})
 
 
 

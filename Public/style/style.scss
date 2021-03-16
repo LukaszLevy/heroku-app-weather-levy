@@ -109,6 +109,31 @@ body {
     box-sizing: border;
 }
 
+.look-cont{
+  position: relative;
+}
+
+.minimal{
+  position: absolute;
+  right: 20px;
+  top: 0;
+  font-size: 20px;
+  color: red;
+  width: 20px;
+  height: 5px;
+  background-color: red;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.minimal:hover{
+  background-color: white;
+}
+
+.minimal-active{
+  display: none;
+}
+
 .top{
   position: fixed;
     bottom: 5px;
@@ -140,6 +165,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
+    transition: .5s
 }
 
 
@@ -660,4 +686,11 @@ figure {
 
 .okx-2:hover {
   background-color: rgba(255, 31, 31, 0.8);
+}
+
+
+@media (min-width: 800px) {
+  .wall{
+    background-image: url(../img/wall/wall_1.jpg);
+  }
 }

@@ -42,7 +42,8 @@ function get_refresh_data(url, cityName) {
   const request = $.ajax({
     url: url,
     dataType: "json",
-    data: { city: cityName },
+    contentType: "application/json; charset=utf-8",
+    data: { city: encodeURIComponent(cityName) },
     type: "GET",
   });
   request.done(function (response) {
@@ -65,10 +66,10 @@ const change_city = function () {
         e.stopImmediatePropagation();
         create_change_box_search($(this));
         $(".city-name-replace").keyup(function(e) {
-          var regex = /^[a-zA-Z]+$/;
+          var regex = /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ -]+$/;
           if (regex.test(this.value) !== true)
           myAlert("W to pole możesz wpisywać tylko litery, bez polskich znaków");
-          this.value = this.value.replace(/[^a-zA-Z]+/, '');
+          this.value = this.value.replace(/[^a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ -]+/, '');
         });
         
         $('.city-name-replace').on("paste",function(e) {
@@ -117,7 +118,7 @@ function serwer_change(el) {
       let cur = $(this);
       $.getJSON(
         '/w',
-        { city: newCityName },
+        { city: encodeURIComponent(newCityName) },
         function (data, textStatus, jqXHR) {
           tab = [];
           let a = objectFromData(data);
@@ -148,6 +149,7 @@ const find_me = () => {
         const request = $.ajax({
           url: url,
           dataType: "json",
+          contentType: "application/json; charset=utf-8",
           data: { lat: lat, lon: lon },
           type: "GET",
         });
