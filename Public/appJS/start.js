@@ -31,7 +31,7 @@ const prepareData = function (cityName) {
     } else {
       myAlert(`Wpisz nazwę miejscowości`);
     }
-  };
+};
   
   //funkcja wyslij zapytanie i odbierz dane ze strony dostawcy pogody
   function getData(url, cityName) {

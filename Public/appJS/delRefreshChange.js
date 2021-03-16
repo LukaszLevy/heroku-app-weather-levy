@@ -68,7 +68,7 @@ const change_city = function () {
         $(".city-name-replace").keyup(function(e) {
           var regex = /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ -]+$/;
           if (regex.test(this.value) !== true)
-          myAlert("W to pole możesz wpisywać tylko litery, bez polskich znaków");
+          myAlert("W to pole możesz wpisywać tylko litery.");
           this.value = this.value.replace(/[^a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ -]+/, '');
         });
         
